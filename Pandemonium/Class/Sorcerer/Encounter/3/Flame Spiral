@@ -1,0 +1,48 @@
+This version has you click on the enemy to display the name of your target.  Which helps avoid misunderstandings, and is a great help if you're playing without a microphone.
+
+@{EncAttack} is for Encounter long attack buffs.  Default 0.
+@{EncDamage} is for Encounter long damage buffs.  Default 0.
+AttackAdds is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
+@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.
+The reason I've split ChaImpDamage & ImpDamage is because I had some damage instances that didn't include a stat mod, and this makes that easy.
+
+You'll also want to have pre-selected & saved a good colour for your character's second aura.
+
+CritNote = 
+CritDice = d6
+ImpAttack = @{Tier}[Expertise] + @{ImplementEnh}[Enh] + @{Charisma}[Mod] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
+ImpDamage = @{ImplementEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{Strength}[Class] + @{EncDamage}[Enc Buffs]
+ChaImpDamage = @{Charisma}[Mod] + @{ImpDamage}
+
+Flame_Spiral
+!token-mod {{
+  --ignore-selected
+  --current-page
+  --ids @{CHARACTER_NAME|character_id}
+  --on
+    show_tooltip
+  --set
+    aura2_radius|1
+    tooltip|"Enemy start or enter: Take damage."
+}}
+&{template:default} {{use=en}} {{name=Flame Spiral}} {{subtitle=%NEWLINE% (Flame Spiral) }} {{Encounter=**✦ Arcane, Implement, Fire** }} {{Standard=**✦ Close Burst 2** }} {{target:=One, two, or three creatures in the burst.}} {{``@{target|AttackTarget1|token_name}``:=[[ 1d20 + @{ImpAttack} + 0?{Misc Attack Mods Vs @{target|AttackTarget1|token_name}? +2 for CA|0}[Misc] ]] vs. **Reflex** }} {{``@{target|AttackTarget2|token_name}``:=[[ 1d20 + @{ImpAttack} + 0?{Misc Attack Mods Vs @{target|AttackTarget2|token_name}? +2 for CA|0}[Misc] ]] vs. **Reflex** }} {{``@{target|AttackTarget3|token_name}``:=[[ 1d20 + @{ImpAttack} + 0?{Misc Attack Mods Vs @{target|AttackTarget3|token_name}? +2 for CA|0}[Misc] ]] vs. **Reflex** }} {{Hit:=[[ 1d10cs0cf0 + @{ChaImpDamage} + 0?{Misc Damage Mods?|0}[Misc] ]] **fire** damage.}} {{Effect:=Until SoMNT, any enemy that enters a square adjacent to me or starts its turn there takes [**1d6**](~Pire_Secondary_Damage#"style="color:#000000; background-color:transparent; padding:1px; border-style:outset; border-width:thin;"") **fire** damage. An enemy can take this damage only once per turn.}} {{Crit:=[[ 1*10 + @{ChaImpDamage} + 0?{Misc Damage Mods?}[Misc] + @{ImplementEnh}@{CritDice}cs0cf0 ]] @{CritNote} }}
+%{CHARACTER_NAME|AttackAdds}
+/w "CHARACTER_NAME" [Aura Off](~Aura_Off)
+
+Pire_Secondary_Damage
+&{template:default} {{use=en}} {{name=Flame Spiral secondary damage}} {{subtitle=%NEWLINE% (Flame Spiral) }} {{Enter square
+or start turn:=[[ 1d6cs0cf0 + @{ImpDamage} + 0?{Misc Damage Mods?|0}[Misc] ]] **fire** damage.}}
+/w "CHARACTER_NAME" [Aura Off](~Aura_Off)
+
+Aura_Off
+!token-mod {{
+  --ignore-selected
+  --current-page
+  --ids
+    @{CHARACTER_NAME|character_id}
+  --off
+    show_tooltip
+  --set
+    aura2_radius|
+    tooltip|
+}}
