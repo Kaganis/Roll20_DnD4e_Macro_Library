@@ -1,0 +1,18 @@
+This version has you click on the enemy to display the name of your target.  Which helps avoid misunderstandings, and is a great help if you're playing without a microphone.
+
+@{EncAttack} is for Encounter long attack buffs.  Default 0.
+@{EncDamage} is for Encounter long damage buffs.  Default 0.
+AttackAdds is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
+@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.
+The reason I've split ChaImpDamage & ImpDamage is because I had some damage instances that didn't include a stat mod, and this makes that easy.
+
+CritNote = 
+CritDice = d6
+AtWillDice = [[ ceil( @{CHARACTER_NAME|Level|Max}/20 ) ]]
+ImpAttack = @{Tier}[Expertise] + @{ImplementEnh}[Enh] + @{Charisma}[Mod] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
+ImpDamage = @{ImplementEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{Strength}[Class] + @{EncDamage}[Enc Buffs]
+ChaImpDamage = @{Charisma}[Mod] + @{ImpDamage}
+
+Acid_Orb
+&{template:default} {{use=aw}} {{name=Acid Orb}} {{subtitle=%NEWLINE% (Acid Orb, RBA) }} {{At-Will=**✦ Arcane, Implement, Acid**}} {{Standard=**✦ Ranged 20** }} {{Target:=One creature.}} {{``@{target|AttackTarget1|token_name}``:=[[ 1d20 + @{ImpAttack} + 0?{Misc Attack Mods? +2 for CA|0}[Misc] ]] vs. **Reflex** }} {{Hit:=[[ @{AtWillDice}d10cs0cf0 + @{ChaImpDamage} + 0?{Misc Damage Mods?|0}[Misc] ]] **acid** damage.}} {{Crit:=[[ @{AtWillDice}*10 + @{ChaImpDamage} + 0?{Misc Damage Mods?}[Misc] + @{ImplementEnh}@{CritDice}cs0cf0 ]] @{CritNote} }}
+%{CHARACTER_NAME|AttackAdds}
