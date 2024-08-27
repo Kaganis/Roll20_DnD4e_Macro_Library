@@ -3,7 +3,9 @@ A basic MBA that everyone can do.  This version has you click on the enemy to di
 @{EncAttack} is for Encounter long attack buffs.  Default 0.
 @{EncDamage} is for Encounter long damage buffs.  Default 0.
 AttackAdds is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
+@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.
 
+CritDice = d6
 AtWillDice = [[ ceil( @{CHARACTER_NAME|Level|Max}/20 ) ]]
 MBAAttack = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Strength}[Mod] + 2[Proficiency] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
 MBADamage= @{Strength}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
