@@ -11,5 +11,5 @@ MBAAttack = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Strength}[Mod] + 2[Profic
 MBADamage= @{Strength}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
 
 MBA
-&{template:default} {{use=aw}} {{name=Melee Basic Attack}} {{subtitle=(Melee Basic Attack) }} {{At-Will=**✦ Weapon** }} {{Standard=**✦ Melee Weapon** (1) }} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{MBAAttack} + 0?{Misc Attack Mods? +1 charge, +2 CA|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ @{AtWillDice}d10r<2cs0cf0 + @{MBADamage} + 0?{Misc Damage Mods?|0}[Misc] ]] (Crit: [[ @{AtWillDice}*10 + @{MBADamage} + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} ) }}
+&{template:default} {{use=aw}} {{name=Melee Basic Attack}} {{subtitle=(Melee Basic Attack) }} {{At-Will=**✦ Weapon** }} {{Standard=**✦ Melee Weapon** (1) }} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{MBAAttack} + 0?{Misc Attack Mods? +1 charge, +2 CA|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ @{AtWillDice}d10cs0cf0 + @{MBADamage} + 0?{Misc Damage Mods?|0}[Misc] ]] (Crit: [[ @{AtWillDice}*10 + @{MBADamage} + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} ) }}
 %{CHARACTER_NAME|AttackAdds}
