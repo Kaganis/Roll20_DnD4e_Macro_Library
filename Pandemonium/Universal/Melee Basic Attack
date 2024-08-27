@@ -1,0 +1,13 @@
+A basic MBA that everyone can do.  This version has you click on the enemy to display the name of your target.  Which helps avoid misunderstandings, and is a great help if you're playing without a microphone.
+
+@{EncAttack} is for Encounter long attack buffs.  Default 0.
+@{EncDamage} is for Encounter long damage buffs.  Default 0.
+AttackAdds is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
+
+AtWillDice = [[ ceil( @{CHARACTER_NAME|Level|Max}/20 ) ]]
+MBAAttack = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Strength}[Mod] + 2[Proficiency] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
+MBADamage= @{Strength}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
+
+MBA
+&{template:default} {{use=aw}} {{name=Melee Basic Attack}} {{subtitle=(Melee Basic Attack) }} {{At-Will=**✦ Weapon** }} {{Standard=**✦ Melee Weapon** (1) }} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{MBAAttack} + 0?{Misc Attack Mods? +1 charge, +2 CA|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ @{AtWillDice}d10r<2cs0cf0 + @{MBADamage} + 0?{Misc Damage Mods?|0}[Misc] ]] (Crit: [[ @{AtWillDice}*10 + @{MBADamage} + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} ) }}
+%{CHARACTER_NAME|AttackAdds}
