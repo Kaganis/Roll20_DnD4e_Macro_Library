@@ -31,8 +31,22 @@ This is the area for macro's created for use with the official Roll20 4e sheet. 
 
 You can of course dig out example macro's from a different section than the tradition you're using it for (mainly if your section doesn't have that power, but another one does), but you'll need to convert it, which will take more work.  I think The Guild will be the easiest to pinch from here, due to the simplicity of their format.  Do beware that the different servers have their own different rules interpretations & rulings, which can change powers in very important & fundamental ways!
 
-As an aside, at the time of writing Pandemonium has the more active Discord, The Guild has better documentation & guides for new players.  I'm a member and thoughly enjoy both.  :-P
-
 ## How to use this Library
 
+All three areas are organised identically.  Each power will have its own file, at the logical place in the directory structure.
 
+The file for the power may have a few different implementations in it, so have a look through all of them, find whichever fits your personal preference best.
+
+Each implementation will be organised in the following way:
+- At the top will be any explanitory notes.
+- Then there will be a listing of any Attributes the Ability macro makes use of.
+- Then the Ability Macro itself.
+- Finally any support Macros (like secondary attacks, etc).
+
+Where you see **CHARACTER_NAME**, replace it with the name of the character you're building, exactly as found on the character sheet.
+
+Powers won't include the effects of feats, magic items, or enhancements gained due to later levelling up, etc.  Only the most rules basic form of the power will be found here (though different levels of macro sophistication will be accepted).
+
+Finally, we are accepting submissions!  Despite my best efforts, I'm never going to play with _every_ possible power.  ;-) Get me the text via any medium you care for should be fine.  Pull requests with the powers already perfectly formatted for the library is ideal, but a PM with your version just cut & pasted from your sheet will work.
+
+Oh, and and if anyone I know from the communities wants commit rights & is willing to help fill this out, that would be most welcome.  :-)
