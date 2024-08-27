@@ -1,0 +1,6 @@
+The $[[0]] & $[[1]] might need their numbers changed, especially if you make any changes to the number of Roll20 rolls (i.e. the number of [[ ]] double square barckets used).
+
+Blood_Apricot
+!token-mod --ignore-selected --current-page --ids @{CHARACTER_NAME|character_id} --set statusmarkers|?Blood_Apricots::1540139:-1
+&{template:default} {{use=it}} {{name=``Blood Apricot``}} {{subtitle=%NEWLINE% }} {{Consumable=**✦ Healing**}} {{Minor=**✦ Personal**}} [[ [[2d8cf0cs0]][2d8] + [[ @{Healing Surge Value} ]][Healing Surge Value] ]] {{Effect:=I eat the apricot. Unless the apricot has absorbed a healing surge in the past 12 hours, I lose a healing surge, and regain only $[[0]] HP. If the apricot has absorbed a healing surge in the past 12 hours, I instead spend a healing surge and regain a total of $[[1]] HP.}}
+/w "CHARACTER_NAME" ✦ **Prepped:** Do a SurgeUse with a bonus of the first roll. %NEWLINE% ✦ **Not Prepped:** Do a SurgeUse with zero surges spent and a bonus of the first roll.
