@@ -1,0 +1,16 @@
+This version has you click on the enemy to display the name of your target.  Which helps avoid misunderstandings, and is a great help if you're playing without a microphone.
+
+The CA ask is a drop down, because you're likely to have something else that key's off if you have CA (likely a damage bonus of some sort).
+
+OffHandDiceSize will obviously vary depending on your weapon.
+
+@{EncAttack} is for Encounter long attack buffs.  Default 0.
+@{EncDamage} is for Encounter long damage buffs.  Default 0.
+@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.
+OffHandDiceSize = 6
+CritDice = d6
+DexAttack = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Dexterity}[Mod] + 3[Proficiency] + 1[Class] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
+DexMeleeDamage = @{Dexterity}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
+
+Dual_Weapon_Attack
+&{template:default} {{use=aw}} {{name=Dual Weapon Attack}} {{subtitle=%NEWLINE% (Dual Weapon Attack) }} {{At-Will=**✦ Martial, Weapon** }} {{Free=**✦ Melee Weapon** (1) }} {{Requirement:=I must be wielding two melee weapons.}} {{Trigger:=I hit with a MBA on my turn.}} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{DexAttack} + ?{CA?|Yes, 1|No, 0}*2[CA] + 0?{Misc Attack Mods?|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ 1d@{OffHandDiceSize}cs0cf0 + @{DexMeleeDamage} + [[ { {@{CHARACTER_NAME|level|Max},0}>9} + { {@{CHARACTER_NAME|level|Max},0}>15} + { {@{CHARACTER_NAME|level|Max},0}>25} ]]*2[Levelling bonus] + 0?{Misc Damage Mods?|0}[Misc] ]] damage. }} {{Crit:=[[ 1*@{OffHandDiceSize} + @{DexMeleeDamage} + [[ { {@{CHARACTER_NAME|level|Max},0}>9} + { {@{CHARACTER_NAME|level|Max},0}>15} + { {@{CHARACTER_NAME|level|Max},0}>25} ]]*2[Levelling bonus] + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} }} {{Special:=I can use this power only once per round.}}
