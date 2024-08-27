@@ -1,0 +1,15 @@
+The automation is set up so that if you use it as a reaction to a blow that would take you down, you can take the damage first, then hit the button & end up with the correct HP.
+
+Does assume there's nothing unusual with your Bloodied value, or when you count as Bloodied.
+
+Dwarven_Armour
+!token-mod {{
+  --ignore-selected
+  --current-page
+  --ids @{CHARACTER_NAME|character_id}
+  --set
+    bar1_value|=[[ @{Hit Points} + @{Healing Surge Value} ]]!
+    statusmarkers|-[[ { { [[ @{Hit Points} + @{Healing Surge Value} - 1[Fix for > actually being >=] ]],0 }>[[ floor( @{CHARACTER_NAME|Hit Points|Max}/2 ) ]] } ]]_Bloodied::365185|-5_Dying::365207
+}}
+&{template:default} {{use=it}} {{name=``Dwarven Armour``}} {{subtitle=%NEWLINE% (Dwarven Armour) }} {{Daily=**✦ Healing, Utility**}} {{Free=**✦ Personal**}} {{Effect:=I regain HP as if I'd spent a healing surge.}}
+/w "CHARACTER_NAME" Healed **from** [[ @{Hit Points}[Old HP] ]] HP with [[ @{Healing Surge Value} ]] total healing.
