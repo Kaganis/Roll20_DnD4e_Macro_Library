@@ -1,0 +1,16 @@
+My preferred form of initiative.  Set "Init" up as a token action, then you'll always have the token selected when rolling initiative (something that Roll20 doesn't handle well if you don't have a token selected).
+
+"+?i" gives a way of adding bonuses or penalties to your initiative after the fact (I know of at least one thing that will change other party members initiative after they've all rolled).  I use it to add all bonuses / penalties.  This method also has the advantage of not resetting if someone else rolls initiative when you're part way through the edit (unlike editing the initiative value directly on the initiative tracker).
+
+The Attribute just gives an easy way to edit both the initiative modifier & the tie breaker in one go.
+
+Not shown here, I usually put notes about my character to display when I roll initiative (unless there's a better place for it).  Stuff everyone or the GM needs to know will be public, stuff only I need to remember will be whispered to me.
+
+InitMods = @{Level}[½ Level] + @{Dexterity}[Mod] + @{trophy-crown}[Trophy / Crown]
+
+Init
+/me prepares for battle: [[ 1d20cf0cs0 + @{InitMods} + [[ ( @{InitMods} )/100 ]][Tie breaker] &{tracker}]]
+/w "CHARACTER_NAME" [+?i](~CHARACTER_NAME|+?i)
+
++?i
+/w "CHARACTER_NAME" Changed Initiative from @{tracker|CHARACTER_NAME} to [[ @{tracker|CHARACTER_NAME} + 0?{Change Initiative by?|1} &{tracker} ]].
