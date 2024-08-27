@@ -1,0 +1,8 @@
+The attribute will vary depending on your weapon loadout.
+
+I've included the Special note about extra uses because in 99% of cases you'll be starting at a high enough level for this to be true, but please be aware that you might need to change this depending on your starting level.
+
+@{OnHandDiceSize} = 8
+
+Power_Strike
+&{template:default} {{use=en}} {{name=Power Strike}} {{subtitle=%NEWLINE% (Power Strike) }} {{Encounter=**✦ Martial, Weapon**}} {{No Action=**✦ Special**}} {{Trigger:=I hit an enemy with a MBA using a weapon.}} {{target:=The enemy I hit.}} {{Effect:=The target takes [[ [[ 1 + { {@{CHARACTER_NAME|level|Max},0}>17} + { {@{CHARACTER_NAME|level|Max},0}>27} ]]d@{OnHandDiceSize}cf0cs0 ]] extra damage from the triggering attack. (Crit: [[ [[ 1 + { {@{CHARACTER_NAME|level|Max},0}>17} + { {@{CHARACTER_NAME|level|Max},0}>27} ]]*@{OnHandDiceSize} ]] ). }} {{Special:=I have two uses of power strike per encounter, but I can still use it only once per turn. }}
