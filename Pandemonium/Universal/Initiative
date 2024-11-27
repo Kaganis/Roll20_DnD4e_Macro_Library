@@ -1,16 +1,19 @@
-My preferred form of initiative.  Set "Init" up as a token action, then you'll always have the token selected when rolling initiative (something that Roll20 doesn't handle well if you don't have a token selected).
-
-"+?i" gives a way of adding bonuses or penalties to your initiative after the fact (I know of at least one thing that will change other party members initiative after they've all rolled).  I use it to add all bonuses / penalties.  This method also has the advantage of not resetting if someone else rolls initiative when you're part way through the edit (unlike editing the initiative value directly on the initiative tracker).
-
-The Attribute just gives an easy way to edit both the initiative modifier & the tie breaker in one go.
-
-Not shown here, I usually put notes about my character to display when I roll initiative (unless there's a better place for it).  Stuff everyone or the GM needs to know will be public, stuff only I need to remember will be whispered to me.
-
-InitMods = @{Level}[½ Level] + @{Dexterity}[Mod] + @{trophy-crown}[Trophy / Crown]
-
 Init
 /me prepares for battle: [[ 1d20cf0cs0 + @{InitMods} + [[ ( @{InitMods} )/100 ]][Tie breaker] &{tracker}]]
 /w "CHARACTER_NAME" [+?i](~CHARACTER_NAME|+?i)
 
 +?i
-/w "CHARACTER_NAME" Changed Initiative from @{tracker|CHARACTER_NAME} to [[ @{tracker|CHARACTER_NAME} + 0?{Change Initiative by?|1} &{tracker} ]].
+/w "@{selected|character_name}" Changed Initiative from @{selected|TrackerPrefix}@{selected|token_name}} to [[ @{selected|TrackerPrefix}@{selected|token_name}} + 0?{Change Initiative by?|1} &{tracker} ]].
+
+@{InitMods} = @{Level}[½ Level] + @{Dexterity}[Mod] + @{trophy-crown}[Trophy / Crown]
+If you don't have default initiative, then change this, the main macro will do the tie breaker correctly.
+@{TrackerPrefix} = @{tracker|
+Yes, that's an unclosed bracket.  It's Roll20 Dark Magic, don't worry about it.
+
+My preferred form of initiative.  Set "Init" up as a token action, then you'll always have the token selected when rolling initiative (something that Roll20 doesn't handle well if you don't have a token selected).
+
+"+?i" gives a way of adding bonuses or penalties to your initiative after the fact (I know of at least one thing that will change other party members initiative after they've all rolled).  I use it to add all bonuses / penalties.  This method also has the advantage of not resetting if someone else rolls initiative when you're part way through the edit (unlike editing the initiative value directly on the initiative tracker).
+
+Yes, +?i has mis-matched brackets.  It's part of the complex work around for some Roll20 limitations.  Most notably, while you could simplify it, this way +?i will work no matter what your token is named.  There's at least one session that has you edit your token's name, so that's a useful capability.
+
+Not shown here, I usually put notes about my character to display when I roll initiative (unless there's a better place for it).  Stuff everyone or the GM needs to know will be public, stuff only I need to remember will be whispered to me.

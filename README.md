@@ -38,10 +38,10 @@ All three areas are organised identically.  Each power will have its own file, a
 The file for the power may have a few different implementations in it, so have a look through all of them, find whichever fits your personal preference best.
 
 Each implementation will be organised in the following way:
-- At the top will be any explanitory notes.
-- Then there will be a listing of any Attributes the Ability macro makes use of.
-- Then the Ability Macro itself.
-- Finally any support Macros (like secondary attacks, etc).
+- The macro in question.
+- Any support or required secondary macro's, like secondary attacks, etc.
+- Then a listing of any Attributes the Ability macro makes use of.
+- At the bottom will be any explanitory notes.
 
 Where you see **CHARACTER_NAME**, replace it with the name of the character you're building, exactly as found on the character sheet.
 

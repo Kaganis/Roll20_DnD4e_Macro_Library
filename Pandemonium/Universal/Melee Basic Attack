@@ -1,15 +1,21 @@
+MBA
+&{template:default} {{use=aw}} {{name=Melee Basic Attack}} {{subtitle=(Melee Basic Attack) }} {{At-Will=**✦ Weapon** }} {{Standard=**✦ Melee Weapon** (1) }} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{StrAttack} + 0?{Misc Attack Mods? +1 charge, +2 CA|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ @{AtWillDice}d@{WeaponSize}cs0cf0 + @{StrDamage} + 0?{Misc Damage Mods?|0}[Misc] ]] (Crit: [[ @{AtWillDice}*@{WeaponSize} + @{StrDamage} + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} ) }}
+%{CHARACTER_NAME|AttackAdds}
+
 A basic MBA that everyone can do.  This version has you click on the enemy to display the name of your target.  Which helps avoid misunderstandings, and is a great help if you're playing without a microphone.
 
+Attributes Used:
+@{StrAttack} = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Strength}[Mod] + 2[Proficiency] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
+Your generic set of attack bonuses.  
 @{EncAttack} is for Encounter long attack buffs.  Default 0.
+@{AtWillDice} = [[ ceil( @{CHARACTER_NAME|Level|Max}/20 ) ]]
+Nearly all At Will powers get an extra weapon dice at level 20.  For those that don't, just set this to 1.
+@{WeaponSize} = 8
+The dice size of your weapon.  If [W] has more than one dice for you, you'll have to adapt the macro.
+@{StrDamage} = @{Strength}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
+Your generic set of damage bonuses.
 @{EncDamage} is for Encounter long damage buffs.  Default 0.
-AttackAdds is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
-@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.
-
-CritDice = d6
-AtWillDice = [[ ceil( @{CHARACTER_NAME|Level|Max}/20 ) ]]
-MBAAttack = @{Tier}[Expertise] + @{WeaponEnh}[Enh] + @{Strength}[Mod] + 2[Proficiency] + @{Level}[½ Level] + @{trophy-crown}[Trophy / Crown] + @{EncAttack}[Enc Buffs]
-MBADamage= @{Strength}[Mod] + @{WeaponEnh}[Enh] + @{trophy-crown}[Trophy / Crown] + @{EncDamage}[Enc Buffs]
-
-MBA
-&{template:default} {{use=aw}} {{name=Melee Basic Attack}} {{subtitle=(Melee Basic Attack) }} {{At-Will=**✦ Weapon** }} {{Standard=**✦ Melee Weapon** (1) }} {{target:=One creature}} {{``@{target|AttackTarget|token_name}``:=[[ 1d20 + @{MBAAttack} + 0?{Misc Attack Mods? +1 charge, +2 CA|0}[Misc] ]] vs. **AC** }} {{Hit:=[[ @{AtWillDice}d10cs0cf0 + @{MBADamage} + 0?{Misc Damage Mods?|0}[Misc] ]] (Crit: [[ @{AtWillDice}*10 + @{MBADamage} + 0?{Misc Damage Mods?}[Misc] + @{WeaponEnh}@{CritDice}cs0cf0 ]] @{CritNote} ) }}
-%{CHARACTER_NAME|AttackAdds}
+@{CritDice} = d6
+This is the extra damage dice you get on a crit granted by your weapon or implement enchantment.  If you're using the rare enchantment without them, use d0.
+@{CritNote} is where you put in anything unusual that happens when you crit.  Like it's always lighting, or it prones, etc.  Default empty.
+%{CHARACTER_NAME|AttackAdds} is a ability macro for a power menu exclusively comprised of thing which work directly after an attack.  Links to things like "Coin of Good Luck", Lighning Weapon's daily power, etc.
