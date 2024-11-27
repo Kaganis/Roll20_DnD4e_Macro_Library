@@ -3,7 +3,7 @@ A collection of example macros for playing D&amp;D 4th edition in Roll20.  Suppo
 
 With the lack of official support for playing the 4th edition of D&D in Roll20, I've created this to give people a helping hand in getting new characters up & running.
 
-While there is an official Rool20 4th edition sheet, it still largely leaves players up to their own devices when it comes to entering powers etc.  So to speed that process up, this repository tries to collect examples where other people have already written up that power, so all that people need to do is copy it to their sheet & do some light customisation, rather than write it from scratch themselves.  They will still need _some_ understanding of how the Roll20 macro language works, but hopefully less than if they were writing it from scratch.
+While there is an official Roll20 4th edition sheet, it still largely leaves players up to their own devices when it comes to entering powers etc.  So to speed that process up, this repository tries to collect examples where other people have already written up that power, so all that people need to do is copy it to their sheet & do some light customisation, rather than write it from scratch themselves.  They will still need _some_ understanding of how the Roll20 macro language works, but hopefully less than if they were writing it from scratch.
 
 For reasons mostly to do with the poor performance of the official 4e sheet at scale, not everywhere uses it.  Therefore this repository is divided into three broad sections:
 
